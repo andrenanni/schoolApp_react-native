@@ -1,0 +1,12 @@
+Passos para executar o projeto
+-----------------------------------------------
+Baixar as dependências do projeto executanto o comando:
+    npm i
+
+Instalando o metro:
+   npx expo install react-native-web react-dom @expo/metro-runtime
+
+Abrir o emulador no Android Studio
+
+Executar o projeto executando o comando:
+   npm run android
