@@ -1,6 +1,6 @@
 import 'react-native-gesture-handler';
 import * as React from 'react';
-import { View, Text, Button } from 'react-native';
+import { View, Text, Button, StyleSheet } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 
@@ -31,10 +31,17 @@ function App() {
     <NavigationContainer>
       <Drawer.Navigator>
         <Drawer.Screen name="Home" component={HomeScreen} />
-        <Drawer.Screen name="Sobre" component={SobreScreen} />
+        <Drawer.Screen name="Quem Somos" component={SobreScreen} />
+        <Drawer.Screen name="Ensino Médio" component={SobreScreen} />
+        <Drawer.Screen name="Ensino Integrado" component={SobreScreen} />
       </Drawer.Navigator>
     </NavigationContainer>
   );
 }
+
+const estilos = StyleSheet.create({
+  sideBarMenu: {
+    backgroundColor: "#cf132c",
+}});
 
 export default App;
