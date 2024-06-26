@@ -1,47 +1,51 @@
 import 'react-native-gesture-handler';
 import * as React from 'react';
-import { View, Text, Button, StyleSheet } from 'react-native';
+import { View, Text, Button, StyleSheet, Image } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
-
-function HomeScreen(props) {
-  return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-      <Text>Home Screen</Text>
-      <Button
-        title='Ir para Sobre'
-        onPress={() => props.navigation.navigate("Sobre")}
-      />
-    </View>
-  );
-}
-
-function SobreScreen() {
-  return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-      <Text>Sobre Screen</Text>
-    </View>
-  );
-}
+import EnsinoIntegrado from './components/Ensinointegrado';
+import EnsinoMedio from './components/Ensinomedio';
+import Home from './components/Home';
+import QuemSomos from './components/Quemsomos';
 
 const Drawer = createDrawerNavigator();
 
-function App() {
+function Logo() {
+  <View>
+    <Image
+      source={require('./assets/logo-gov-sp.png')}
+    />
+  </View>
+}
+
+
+function DrawerMenu() {
   return (
-    <NavigationContainer>
-      <Drawer.Navigator>
-        <Drawer.Screen name="Home" component={HomeScreen} />
-        <Drawer.Screen name="Quem Somos" component={SobreScreen} />
-        <Drawer.Screen name="Ensino Médio" component={SobreScreen} />
-        <Drawer.Screen name="Ensino Integrado" component={SobreScreen} />
-      </Drawer.Navigator>
-    </NavigationContainer>
+    <Drawer.Navigator
+      screenOptions={{
+        drawerStyle: {
+          backgroundColor: '#b20000',
+          width: '100%'
+        },
+        drawerLabelStyle: {
+          color: 'white',
+          fontSize: 17,
+        },
+      }
+      }
+    >
+      <Drawer.Screen name={Logo} component={Home} />
+      <Drawer.Screen name="Quem Somos" component={QuemSomos} />
+      <Drawer.Screen name="Ensino Médio" component={EnsinoMedio} />
+      <Drawer.Screen name="Ensino Integrado" component={EnsinoIntegrado} />
+    </ Drawer.Navigator>
   );
 }
 
-const estilos = StyleSheet.create({
-  sideBarMenu: {
-    backgroundColor: "#cf132c",
-}});
-
-export default App;
+export default function App() {
+  return (
+    <NavigationContainer>
+      <DrawerMenu />
+    </NavigationContainer>
+  );
+}
